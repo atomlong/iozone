@@ -5,9 +5,8 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Past maintainer: Joris Steyn <jorissteyn@gmail.com>
 # Contributor: TDY <tdy@gmx.com>
 pkgname=iozone
-pkgver=3.490
-_pkgver=${pkgver/./_}
-pkgrel=2
+pkgver=3_434
+pkgrel=5
 pkgdesc="A filesystem benchmark tool"
 arch=('any')
 url="http://www.iozone.org/"
