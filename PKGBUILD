@@ -9,7 +9,7 @@ pkgver=3.490
 _pkgver=${pkgver/./_}
 pkgrel=2
 pkgdesc="A filesystem benchmark tool"
-arch=('armv7h' 'aarch64' 'x86_64')
+arch=('any')
 url="http://www.iozone.org/"
 license=('custom')
 depends=('sh')
@@ -30,20 +30,13 @@ build() {
 package() {
 	cd "${srcdir}/${pkgname}${_pkgver}/src/current"
 
-	_examples=usr/share/doc/iozone3
+	_examples=/usr/share/doc/iozone3/examples
 
 	install -Dm755 iozone ${pkgdir}/usr/bin/iozone
 	install -Dm755 fileop ${pkgdir}/usr/bin/fileop
 	install -Dm755 pit_server ${pkgdir}/usr/bin/pit_server
 	install -Dm644 ../../docs/$pkgname.1 ${pkgdir}/usr/share/man/man1/$pkgname.1
 
-	#for i in gnuplotps.dem gnu3d.dem gnuplot.dem Gnuplot.txt client_list; do
-	#	install -Dm644 $i ${pkgdir}/$_examples/$i
-	#done
-
-	#for i in Generate_Graphs iozone_visualizer.pl gengnuplot.sh report.pl; do
-	#	install -Dm755 $i ${pkgdir}/$_examples/$i
-	#done
 	for i in $(find ${srcdir}/${pkgname}${_pkgver}/docs -type f);
 	do
 		mode=$(stat -c "%a %n" ${i} | awk '{print $1}')
